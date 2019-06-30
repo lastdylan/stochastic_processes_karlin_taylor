@@ -1,0 +1,92 @@
+%%=====================================================================================
+%%
+%%       Filename:  one.tex
+%%
+%%    Description:  
+%%
+%%        Version:  1.0
+%%        Created:  06/30/2019
+%%       Revision:  none
+%%
+%%         Author:  Last Feremenga, Ph. D.
+%%   Organization:  
+%%      Copyright:  Copyright (c) 2019, YOUR NAME
+%%
+%%          Notes:  
+%%
+%%=====================================================================================
+
+\begin{center}
+{\LARGE \bf Chapter 2} \\
+{\LARGE Elements of Stochastic Processes}\\
+\end{center}
+
+\section{Markov Chains}
+\par The definition of a Markov chain is quite clear from Section 1. Of usual interest are {\it discrete
+time} Markov chains, where the state space is countable and finite. These states are normally
+labelled by nonnegative integers, since there can be found a one-to-one mapping between the states
+and a subset of integers. The time at which the chain is evaluated is also labelled by a nonnegative
+integer. So, a chain that is in state $i$ at time $n$ is represented by
+\begin{equation}
+X_n = i
+\end{equation}
+
+\par The probability of $X_{n+1} = j$ given that $X_n = i$, known as the transition probability, is then
+\begin{equation}
+P_{ij}^{n,n+1} = \pr{X_{n+1}=j|X_n=i}.
+\end{equation}
+Most chains of interest are {\it stationery}, indicating that the transition probabilities are
+independent of $n$. So, the transition probabilities are represented simply as $P_{ij}^{n, n+1}$.
+
+\par A Markov chain is fully defined by specifying all the transition probabilities. This can be done
+by defining a {\it transition probability matrix}, $\vec{P} = \norm{P_{ij}}$.
+
+\subsection{Example Markov Chains}
+\par Refer to Elementary Problem 1a. for a full problem description. In brief, we are to define
+$\vec{P} = \norm{P_{jk}}$ for a sequence of coin tosses (with probability of heads $p$)
+where the state of the process is the number of heads minus the number of tails at time $n$. So,
+it would suffice to find
+
+\begin{equation}
+P_{jk} = \pr{H^{n+1}-T^{n+1}=k|H^n-T^n=j}.
+\end{equation}
+
+We notice that $H^{n+1} = H^n + h$ and $T^{n+1} = T^n + t$, where $h=1, t=0$ if we toss heads
+at $n+1$ time otherwise $h=0, t=1$. So,
+\begin{equation}
+P_jk = \pr{H^n+h-T^n-t=k} = \pr{h-t=k-j}
+\end{equation}
+When $k-j=1$ we'd have tossed heads; we get that with probability $p$. When $k-j=-1$ we'd have
+tossed tails; we get that with probability $1-p$. So
+\begin{equation}
+P_{jk} =
+    \begin{cases}
+    p, & k=j+1 \\
+    1-p, & k=j-1 \\
+    0, & \text{otherwise}
+    \end{cases}
+\end{equation}
+
+\par Refer to Elementary Problem 1b. for a full problem description. In brief, we are to find a
+$\vec{P}$ for a system of two urns that at $n=0$ contain $N$ black and white balls each, respectively.
+At each time step, balls are randomly picked from each urn and swapped between the urns. The state of
+this system is the number of white balls in the first urn. We label these urns $\beta,\omega$
+respectively. Now
+\begin{equation}
+P_{jk} = \pr{W^{n+1}_\beta = k|W^n_\beta = j}
+\end{equation}
+where $W^n_\beta$ is the variable for the number of white balls in the $\beta$ urn at time $n$.
+Given that $W^n_\beta = j$, we know that $W^n_\omega = N-j$. For $k=j+1$ we need to pick a white
+ball from $\omega$ and a black ball from $\beta$. For $k=j$ we need to pick either both black balls
+or white balls. For $k=j-1$ we need to pick a black ball from $\omega$ and a white ball from $\beta$.
+These cases clearly give
+\begin{equation}
+P_{jk} =
+    \begin{cases}
+    \frac{(N-j)^2}{N^2}, & k=j+1 \\
+    \frac{i^2}{N^2}, & k=j-1 \\
+    \frac{2j(N-j)}{N^2}, & k=j \\
+    0, & \text{otherwise}
+    \end{cases}
+\end{equation}
+We can convince ourselves by checking that these transition probabilities sum up to 1.

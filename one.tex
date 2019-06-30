@@ -1,0 +1,83 @@
+%%=====================================================================================
+%%
+%%       Filename:  one.tex
+%%
+%%    Description:  
+%%
+%%        Version:  1.0
+%%        Created:  05/31/2019
+%%       Revision:  none
+%%
+%%         Author:  Last Feremenga, Ph. D.
+%%   Organization:  
+%%      Copyright:  Copyright (c) 2019, YOUR NAME
+%%
+%%          Notes:  
+%%
+%%=====================================================================================
+
+\begin{center}
+{\LARGE \bf Chapter 1} \\
+{\LARGE Elements of Stochastic Processes}\\
+\end{center}
+
+\section{Review of Basic Terminology and Properties of Random Variables and Distribution Functions}
+\par A random variable $X$ is \textit{discrete} if there exists a finite or numerable set of distinct values
+$\lambda_i$ for $i\in\mathbb{Z}$ s.t $\pr{X=\lambda_i}=a_i>0$ and $\sum_i a_i = 1$.
+If on the other hand $\pr{X=\lambda}=0$ for any $\lambda$, the variable is called \textit{continuous}.
+
+\par \textit{Distribution function} $F$ is what we normally called the cumulative distribution function (CDF),
+ and it is defined as
+
+\begin{equation}
+    F(\lambda) = \int_{-\infty}^{\lambda}p(t)dt
+\end{equation}
+
+where $p(t)$ is the \textit{probability density}. $p$ may or may not exist for continuous random variables. For
+discrete variables this boils down to
+\begin{equation}
+    F(\lambda) = \pr{X\leq\lambda}.
+\end{equation}
+
+\par \textit{Moments} for random variables are given by
+
+\begin{equation}
+    E[X^m] = \int_{-\infty}^{\infty}x^mp(x)dx
+\end{equation}
+for a moment of order $m$. This integral turns into a sum for discrete variables. The first moment is the \textit{mean},
+$m_X$. The second central moment (the 2nd moment of random variable $X - m_X$ is the \textit{variance}, $\sigma_X^2$.
+
+\par Functions of random variables are random variables. Expectations of functions of random variables can be easily
+computed.
+
+\subsection{Joint Distribution Functions}
+The joint distribution of a pair of discrete random variables $X, Y$ is
+\begin{equation}
+    F(\lambda_1, \lambda_2) = \pr{X\leq\lambda_1, Y\leq\lambda_2}.
+\end{equation}
+
+The marginal distribution of $X$ is then $F(\lambda, \infty) = \lim_{\lambda_2\to\infty}F(\lambda, \lambda_2)$.
+The marginal distribution of $Y$ is defined similarly.
+The corresponding probability density, if it exists, for a joint distribution would then be
+
+\begin{equation}
+    F(\lambda_1, \lambda_2) = \int_{-\infty}^{\lambda_1}\int_{-\infty}^{\lambda_2}p(s,t)dsdt.
+\end{equation}
+
+\par If $X, Y$ have respective means $m_X, m_Y$, their covariance is
+
+\begin{equation}
+\sigma_{XY} = E[(X-m_X)(Y-m_Y)].
+\end{equation}
+
+\par If $X_1, X_2$ are independent with respective distributions $F_1, F_2$, the distribution $F$ of their sum
+is
+
+\begin{equation}
+F(x) = \int F_1(x-y)dF_2(y) = \int F_2(x-y)dF_1(y).
+\end{equation}
+The same convolution goes for the density functions if they exist.
+
+\subsection{Characteristic Functions}
+
+
